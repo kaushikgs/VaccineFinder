@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb.azure",
+      "connectionId": "CosmosDBString",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
