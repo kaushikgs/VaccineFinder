@@ -19,17 +19,13 @@ namespace VaccineFinderLibrary.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public CalendarResponse Get()
+        [HttpPost]
+        public CalendarResponse Post(Center filter)
         {
             var rng = new Random();
             return new CalendarResponse
             {
-                centers = Enumerable.Range(1, 5).Select(index => new Center
-                {
-                    center_id = rng.Next(),
-                    state_name = "Random state " + index.ToString()
-                })
+                centers = Enumerable.Range(1, 5).Select(index => filter)
             };
         }
     }

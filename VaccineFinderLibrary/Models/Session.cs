@@ -6,8 +6,8 @@ namespace VaccineFinderLibrary.Models
     {
         public string session_id { get; set; }
         public string date { get; set; }
-        public string available_capacity { get; set; }
-        public string min_age_limit { get; set; }
+        public int available_capacity { get; set; }
+        public int min_age_limit { get; set; }
         public string vaccine { get; set; }
         public IEnumerable<string> slots { get; set; }
     }

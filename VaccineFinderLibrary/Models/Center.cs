@@ -12,7 +12,7 @@ namespace VaccineFinderLibrary.Models
         public string state_name { get; set; }
         public string district_name { get; set; }
         public string block_name { get; set; }
-        public string pincode { get; set; }
+        public int pincode { get; set; }
         public string from { get; set; }
         public string to { get; set; }
         public string fee_type { get; set; }
