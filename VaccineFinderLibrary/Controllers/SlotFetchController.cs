@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VaccineFinderLibrary.Models;
 
@@ -13,20 +14,18 @@ namespace VaccineFinderLibrary.Controllers
     public class SlotFetchController : ControllerBase
     {
         private readonly ILogger<SlotFetchController> _logger;
+        private CowinAPIHandler apiHandler;
 
-        public SlotFetchController(ILogger<SlotFetchController> logger)
+        public SlotFetchController(ILogger<SlotFetchController> logger, IHttpClientFactory clientFactory)
         {
             _logger = logger;
+            apiHandler = new CowinAPIHandler(clientFactory);
         }
 
         [HttpPost]
-        public CalendarResponse Post(Center filter)
+        public async Task<CalendarResponse> PostAsync(CalendarRequest request)
         {
-            var rng = new Random();
-            return new CalendarResponse
-            {
-                centers = Enumerable.Range(1, 5).Select(index => filter)
-            };
+            return await apiHandler.CalendarDistrictSearchAsync(request.state_name, request.district_name, request.date);
         }
     }
 }
